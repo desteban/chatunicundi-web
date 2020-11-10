@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "materialize-css/dist/js/materialize";
 
 ReactDOM.render(
   <React.StrictMode>

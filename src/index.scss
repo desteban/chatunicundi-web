@@ -4,8 +4,40 @@ nav {
   margin: 0%;
   position: fixed;
   background: "#1F3F3E";
+  z-index: 10000;
 }
 
-.verde {
+.verde-u {
   background-color: #1f3f3e;
+}
+
+.espacio-contenido {
+  margin-top: 70px;
+}
+
+.tabs {
+  display: flex;
+
+  .tab {
+    flex: 1;
+  }
+
+  .indicator {
+    background-color: #1f3f3e;
+  }
+}
+
+.tabs .tab a:hover,
+.tabs .tab a.active {
+  color: #1f3f3e;
+}
+
+.tabs .tab a {
+  color: black;
+}
+
+.tabs .tab a:focus,
+.tabs .tab a:focus.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  outline: none;
 }
