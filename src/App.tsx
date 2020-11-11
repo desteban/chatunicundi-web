@@ -1,8 +1,9 @@
 import React from "react";
 import logo from "./logo.svg";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import HeaderComponent from "./components/Header.component";
-import GrupoItem from "./components/Grupo.item.component";
+import Home from "./components/Home.components";
+import Error from "./components/Error.component";
 
 declare var M: any;
 
@@ -10,32 +11,19 @@ class App extends React.Component {
   render() {
     console.log("render");
     return (
-      <div className="App">
-        <HeaderComponent />
-        <div className="row contenido">
-          <div id="test-swipe-1" className="col s12 lista-grupos">
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-            <GrupoItem />
-          </div>
-          <div id="test-swipe-2" className="col s12">
-            Test 2
-          </div>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+
+            <Route path="*">
+              <Error />
+            </Route>
+          </Switch>
         </div>
-      </div>
+      </Router>
     );
   }
 
