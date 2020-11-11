@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import axios from "axios";
 
 import HeaderComponent from "./Header.component";
@@ -27,18 +26,23 @@ class Home extends React.Component<any, Istate> {
   }
 
   render() {
-    console.log("render");
+    this.tabs();
     return (
       <div className="App">
         <HeaderComponent />
         <div className="row contenido">
           <div id="test-swipe-1" className="col s12 lista-grupos">
             {this.state.grupos.map((grupo) => {
-              return GrupoItem(grupo.nombre);
+              return GrupoItem(grupo.nombre, grupo._id);
             })}
           </div>
           <div id="test-swipe-2" className="col s12">
-            Test 2
+            Test 2{GrupoItem("grupo", 1)}
+            {GrupoItem("grupo", 2)}
+            {GrupoItem("grupo", 3)}
+            {GrupoItem("grupo", 4)}
+            {GrupoItem("grupo", 5)}
+            {GrupoItem("grupo", 6)}
           </div>
         </div>
       </div>
@@ -46,6 +50,9 @@ class Home extends React.Component<any, Istate> {
   }
 
   // https://cahtunicundi.herokuapp.com/grupos
+  componentDidMount() {
+    this.tabs();
+  }
 
   UNSAFE_componentWillMount() {
     axios
@@ -58,15 +65,13 @@ class Home extends React.Component<any, Istate> {
       });
   }
 
-  UNSAFE_componentDidMount() {
+  tabs = () => {
     let elem = document.querySelector(".tabs");
-    // var instance = M.Tabs.init(elem, {
-    //   swipeable: true,
-    //   esponsiveThreshold: 100,
-    // });
-    // M.AutoInit();
-    var instance = M.Tabs.init(elem);
-  }
+    var instance = M.Tabs.init(elem, {
+      swipeable: true,
+    });
+    // var instance = M.Tabs.init(elem);
+  };
 }
 
 export default Home;

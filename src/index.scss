@@ -2,10 +2,6 @@
 
 $sombra: rgb(128, 126, 121);
 
-body {
-  background-color: #f7f7f7;
-}
-
 .fixed {
   position: fixed;
   z-index: 1000;
@@ -81,4 +77,5 @@ body {
 
 .contenido {
   margin-top: 110px;
+  height: 100%;
 }
