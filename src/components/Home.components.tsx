@@ -3,6 +3,7 @@ import axios from "axios";
 
 import HeaderComponent from "./Header.component";
 import GrupoItem from "./Grupo.item.component";
+import Chat from "./Chat.component";
 
 declare var M: any;
 
@@ -29,18 +30,19 @@ class Home extends React.Component<any, Istate> {
       <div className="App">
         {HeaderComponent(true)}
         <div className="row contenido">
-          <div id="test-swipe-1" className="col s12 lista-grupos">
+          <div className="col m8 chat-contenido hide-on-small-only">
+            <Chat />
+          </div>
+
+          <div id="test-swipe-1" className="col s12 m4 lista-grupos">
             {this.state.grupos.map((grupo) => {
               return GrupoItem(grupo.nombre, grupo._id);
             })}
           </div>
-          <div id="test-swipe-2" className="col s12">
-            Test 2{GrupoItem("grupo", 1)}
-            {GrupoItem("grupo", 2)}
-            {GrupoItem("grupo", 3)}
-            {GrupoItem("grupo", 4)}
-            {GrupoItem("grupo", 5)}
-            {GrupoItem("grupo", 6)}
+
+          <div id="test-swipe-2" className="col s12 ajustes">
+            Test 2{GrupoItem("Ajustes", 1)}
+            {GrupoItem("Ajustes", 2)}
           </div>
         </div>
       </div>
@@ -51,6 +53,21 @@ class Home extends React.Component<any, Istate> {
   componentDidMount() {
     this.tabs();
   }
+
+  validarchat = () => {
+    (() => {
+      let chat = document.getElementById("test-swipe-2");
+      if (chat) {
+        if (window.screen.width > 600) {
+          chat.style.display = "";
+        }
+
+        if (window.screen.width <= 600) {
+          chat.style.display = "none";
+        }
+      }
+    })();
+  };
 
   UNSAFE_componentWillMount() {
     axios

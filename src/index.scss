@@ -48,13 +48,14 @@ $sombra: rgb(128, 126, 121);
 
 .grupo-item {
   background-color: #fff;
-  padding: 1rem;
+  padding: 0.7rem 1rem;
   display: flex;
   border-radius: 1rem;
   margin: 10px 0px;
   box-shadow: 0 1px 5px $sombra, 0 -0px 5px $sombra;
   height: 70px;
   align-items: center;
+  min-width: 190px;
 
   .imagen {
     height: 60px;
@@ -63,19 +64,37 @@ $sombra: rgb(128, 126, 121);
 
     img {
       display: block;
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       object-fit: cover;
       border-radius: 4rem;
     }
   }
 
   .titulo {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 }
 
 .contenido {
-  margin-top: 110px;
-  height: 100%;
+  margin-top: 75px;
+}
+
+@media screen and (max-width: 600px) {
+  .contenido {
+    margin-top: 110px;
+  }
+}
+
+.chat {
+  position: relative;
+  height: 80vh;
+
+  .imput-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+  }
 }

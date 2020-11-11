@@ -14,7 +14,7 @@ function HeaderComponent(tabs: boolean = false) {
 
 const tab = () => {
   return (
-    <ul id="tabs-swipe-demo" className="tabs">
+    <ul id="tabs-swipe-demo" className="tabs hide-on-med-and-up">
       <li className="tab col s3">
         <a href="#test-swipe-1">Grupos</a>
       </li>
