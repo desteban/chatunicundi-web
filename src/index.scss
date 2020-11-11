@@ -10,6 +10,21 @@ $sombra: rgb(128, 126, 121);
   left: 0;
 }
 
+.login {
+  position: relative;
+}
+
+.logo-login {
+  height: 200px;
+}
+
+.formulario-login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .verde-u {
   background-color: #1f3f3e;
 }
