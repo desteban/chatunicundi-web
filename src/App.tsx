@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 
 import HeaderComponent from "./components/Header.component";
+import GrupoItem from "./components/Grupo.item.component";
 
 declare var M: any;
 
@@ -12,20 +13,25 @@ class App extends React.Component {
       <div className="App">
         <HeaderComponent />
         <div className="row contenido">
-          <ul id="tabs-swipe-demo" className="tabs">
-            <li className="tab col s3">
-              <a href="#test-swipe-1">Grupos</a>
-            </li>
-            <li className="tab col s3">
-              <a className="active" href="#test-swipe-2">
-                Ajustes
-              </a>
-            </li>
-          </ul>
-          <div id="test-swipe-1" className="col s12 blue">
-            Test 1
+          <div id="test-swipe-1" className="col s12 lista-grupos">
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
+            <GrupoItem />
           </div>
-          <div id="test-swipe-2" className="col s12 red">
+          <div id="test-swipe-2" className="col s12">
             Test 2
           </div>
         </div>

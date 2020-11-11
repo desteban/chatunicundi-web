@@ -1,5 +1,19 @@
 @import "../node_modules/materialize-css/dist/css/materialize.min.css";
 
+$sombra: rgb(128, 126, 121);
+
+body {
+  background-color: #f7f7f7;
+}
+
+.fixed {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
 .verde-u {
   background-color: #1f3f3e;
 }
@@ -10,6 +24,7 @@
 
 .tabs {
   display: flex;
+  background-color: #1f3f3e;
 
   .tab {
     flex: 1;
@@ -22,15 +37,48 @@
 
 .tabs .tab a:hover,
 .tabs .tab a.active {
-  color: #1f3f3e;
+  color: #fff;
 }
 
 .tabs .tab a {
-  color: black;
+  color: gray;
 }
 
 .tabs .tab a:focus,
 .tabs .tab a:focus.active {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
   outline: none;
+}
+
+.grupo-item {
+  background-color: #fff;
+  padding: 1rem;
+  display: flex;
+  border-radius: 1rem;
+  margin: 10px 0px;
+  box-shadow: 0 1px 5px $sombra, 0 -0px 5px $sombra;
+  height: 70px;
+  align-items: center;
+
+  .imagen {
+    height: 60px;
+    margin-right: 1rem;
+    border-radius: 2rem;
+
+    img {
+      display: block;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 4rem;
+    }
+  }
+
+  .titulo {
+    font-size: 1.4rem;
+  }
+}
+
+.contenido {
+  margin-top: 110px;
 }
