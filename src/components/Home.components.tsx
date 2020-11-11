@@ -20,8 +20,6 @@ class Home extends React.Component<any, Istate> {
   constructor(props: any) {
     super(props);
 
-    let grupos: any;
-
     this.state = { grupos: [] };
   }
 
@@ -67,10 +65,10 @@ class Home extends React.Component<any, Istate> {
 
   tabs = () => {
     let elem = document.querySelector(".tabs");
-    var instance = M.Tabs.init(elem, {
-      swipeable: true,
-    });
-    // var instance = M.Tabs.init(elem);
+    // var instance = M.Tabs.init(elem, {
+    //   swipeable: true,
+    // });
+    var instance = M.Tabs.init(elem);
   };
 }
 

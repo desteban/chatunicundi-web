@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-declare var M: any;
-
 function HeaderComponent() {
   return (
     <div className="fixed">

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function GrupoItemComponent(nombre?: string, key?: any) {
   return (
@@ -11,7 +10,7 @@ function GrupoItemComponent(nombre?: string, key?: any) {
           className="circulo"
         />
       </div>
-      <Link to=""> {nombre ? nombre : "Nombre"} </Link>
+      <p className="titulo">{nombre ? nombre : "Nombre"} Home</p>
     </div>
   );
 }
