@@ -4,7 +4,7 @@ declare var M: any;
 
 function HeaderComponent() {
   return (
-    <nav className="nav-wrapper verde-u">
+    <nav className="nav-wrapper verde-u navbar-fixed">
       <span className="brand-logo center">ChatUnicundi</span>
     </nav>
   );

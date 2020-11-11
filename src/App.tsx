@@ -12,24 +12,21 @@ class App extends React.Component {
       <div className="App">
         <HeaderComponent />
         <div className="row contenido">
-          <div className="col s12 espacio-contenido">
-            <ul className="tabs">
-              <li className="tab">
-                <a href="lista-grupos">Grupos</a>
-              </li>
-              <li className="tab">
-                <a href="contenidochat">Ajustes</a>
-              </li>
-            </ul>
+          <ul id="tabs-swipe-demo" className="tabs">
+            <li className="tab col s3">
+              <a href="#test-swipe-1">Grupos</a>
+            </li>
+            <li className="tab col s3">
+              <a className="active" href="#test-swipe-2">
+                Ajustes
+              </a>
+            </li>
+          </ul>
+          <div id="test-swipe-1" className="col s12 blue">
+            Test 1
           </div>
-          <div className="row chat">
-            <div id="lista-grupos" className="col s12 m4">
-              <h2>Hola</h2>
-            </div>
-
-            <div id="contenidochat" className="col s12 m8">
-              <h2>Contenido</h2>
-            </div>
+          <div id="test-swipe-2" className="col s12 red">
+            Test 2
           </div>
         </div>
       </div>
