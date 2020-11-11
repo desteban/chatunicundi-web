@@ -27,7 +27,7 @@ class Home extends React.Component<any, Istate> {
     this.tabs();
     return (
       <div className="App">
-        <HeaderComponent />
+        {HeaderComponent(true)}
         <div className="row contenido">
           <div id="test-swipe-1" className="col s12 lista-grupos">
             {this.state.grupos.map((grupo) => {
@@ -68,7 +68,7 @@ class Home extends React.Component<any, Istate> {
     // var instance = M.Tabs.init(elem, {
     //   swipeable: true,
     // });
-    var instance = M.Tabs.init(elem);
+    M.Tabs.init(elem);
   };
 }
 

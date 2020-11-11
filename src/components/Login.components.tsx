@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Redirect, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import HeaderComponent from "./Header.component";
 
 interface Istate {
   username: string;
@@ -16,10 +17,8 @@ class Login extends Component<any, Istate> {
   render() {
     return (
       <div>
-        <nav className="nav-wrapper verde-u">
-          <span className="brand-logo center">ChatUnicundi</span>
-        </nav>
-        <div className="container">
+        {HeaderComponent()}
+        <div className="container contenido">
           <h1 className="center">Login</h1>
           <form onSubmit={(e) => this.send(e)}>
             <div className="row">

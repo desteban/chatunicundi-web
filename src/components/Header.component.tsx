@@ -1,24 +1,30 @@
-import React, { Component } from "react";
+import React from "react";
 
-function HeaderComponent() {
+function HeaderComponent(tabs: boolean = false) {
   return (
     <div className="fixed">
       <nav className="nav-wrapper verde-u">
         <span className="brand-logo center">ChatUnicundi</span>
       </nav>
 
-      <ul id="tabs-swipe-demo" className="tabs">
-        <li className="tab col s3">
-          <a href="#test-swipe-1">Grupos</a>
-        </li>
-        <li className="tab col s3">
-          <a className="" href="#test-swipe-2">
-            Ajustes
-          </a>
-        </li>
-      </ul>
+      {tabs ? tab() : null}
     </div>
   );
 }
+
+const tab = () => {
+  return (
+    <ul id="tabs-swipe-demo" className="tabs">
+      <li className="tab col s3">
+        <a href="#test-swipe-1">Grupos</a>
+      </li>
+      <li className="tab col s3">
+        <a className="" href="#test-swipe-2">
+          Ajustes
+        </a>
+      </li>
+    </ul>
+  );
+};
 
 export default HeaderComponent;

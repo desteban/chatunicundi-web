@@ -10,7 +10,7 @@ function GrupoItemComponent(nombre?: string, key?: any) {
           className="circulo"
         />
       </div>
-      <p className="titulo">{nombre ? nombre : "Nombre"} Home</p>
+      <p className="titulo">{nombre ? nombre : "Nombre"}</p>
     </div>
   );
 }
