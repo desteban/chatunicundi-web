@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 
-import HeaderComponent from "./Header.component";
 import GrupoItem from "./Grupo.item.component";
 import Chat from "./Chat.component";
 
@@ -27,38 +26,33 @@ class Home extends React.Component<any, Istate> {
   render() {
     this.tabs();
     return (
-      <div id="Home" className="home">
-        {HeaderComponent(true)}
-        <div className="row contenido">
-          <div
-            id="test-swipe-1"
-            className="col s12 m4 lista-grupos scroll-person"
-          >
-            {this.state.grupos.map((grupo) => {
-              return GrupoItem(grupo.nombre, grupo._id);
-            })}
-            {GrupoItem("Ajustes", 2)}
-            {GrupoItem("Ajustes", 2)}
-            {GrupoItem("Ajustes", 2)}
-            {GrupoItem("Ajustes", 2)}
-            {GrupoItem("Ajustes", 2)}
-            {GrupoItem("Ajustes", 2)}
-            {GrupoItem("Ajustes", 2)}
-            {GrupoItem("Ajustes", 2)}
-            {GrupoItem("Ajustes", 2)}
+      <div className="grid">
+        {/*  App background */}
+        <div className="top"></div>
+        <div className="bottom"></div>
+        {/*  App */}
+        <div className="app">
+          <div className="sidebar">
+            {/*  Sidebar header */}
+            <div className="sidebar-header">
+              <img src="images/me.jpg" />
+              <div className="sidebar-header-icons">
+                <p className="nombre">Nombre</p>
+              </div>
+            </div>
+
+            {/*  Chats */}
+            <div className="chats">
+              {this.state.grupos.map((grupo) => {
+                return GrupoItem(grupo.nombre, grupo._id);
+              })}
+              {GrupoItem("Fisica", "15")}
+              {GrupoItem("Fisica", "1")}
+            </div>
           </div>
 
-          <div id="test-swipe-2" className="col s12 ajustes">
-            Test 2{GrupoItem("Ajustes", 1)}
-            {GrupoItem("Ajustes", 2)}
-          </div>
-
-          <div
-            id="contenido-chat"
-            className="col m8 chat-contenido hide-on-small-only"
-          >
-            <Chat />
-          </div>
+          {/* chat */}
+          <Chat />
         </div>
       </div>
     );
