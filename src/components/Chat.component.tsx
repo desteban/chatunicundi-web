@@ -7,15 +7,26 @@ class Chat extends Component {
 
   render() {
     return (
-      <div className="chat">
-        <h2>Chat</h2>
-        <div className="imput-container">
+      <div className="chat" id="chatcontainer">
+        {/* mensajes */}
+        <div className="mensajes">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            iure minima illum commodi, deserunt consectetur a natus reiciendis
-            vero voluptatibus deleniti est, explicabo atque temporibus minus.
-            Exercitationem deserunt hic molestiae!
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
+            praesentium et. Dolorum pariatur ut impedit tempore enim accusamus
+            ullam quasi ea, eaque aliquam id. Id dignissimos porro deserunt
+            quasi incidunt.
           </p>
+        </div>
+
+        {/* input del chat */}
+        <div className="imput-container verde-u">
+          <div className="input-field col s12">
+            <textarea
+              id="textarea1"
+              className="materialize-textarea"
+              placeholder="Escribe un mensaje"
+            ></textarea>
+          </div>
         </div>
       </div>
     );

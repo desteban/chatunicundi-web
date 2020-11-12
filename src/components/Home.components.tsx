@@ -27,22 +27,37 @@ class Home extends React.Component<any, Istate> {
   render() {
     this.tabs();
     return (
-      <div className="App">
+      <div id="Home" className="home">
         {HeaderComponent(true)}
         <div className="row contenido">
-          <div className="col m8 chat-contenido hide-on-small-only">
-            <Chat />
-          </div>
-
-          <div id="test-swipe-1" className="col s12 m4 lista-grupos">
+          <div
+            id="test-swipe-1"
+            className="col s12 m4 lista-grupos scroll-person"
+          >
             {this.state.grupos.map((grupo) => {
               return GrupoItem(grupo.nombre, grupo._id);
             })}
+            {GrupoItem("Ajustes", 2)}
+            {GrupoItem("Ajustes", 2)}
+            {GrupoItem("Ajustes", 2)}
+            {GrupoItem("Ajustes", 2)}
+            {GrupoItem("Ajustes", 2)}
+            {GrupoItem("Ajustes", 2)}
+            {GrupoItem("Ajustes", 2)}
+            {GrupoItem("Ajustes", 2)}
+            {GrupoItem("Ajustes", 2)}
           </div>
 
           <div id="test-swipe-2" className="col s12 ajustes">
             Test 2{GrupoItem("Ajustes", 1)}
             {GrupoItem("Ajustes", 2)}
+          </div>
+
+          <div
+            id="contenido-chat"
+            className="col m8 chat-contenido hide-on-small-only"
+          >
+            <Chat />
           </div>
         </div>
       </div>
@@ -56,15 +71,23 @@ class Home extends React.Component<any, Istate> {
 
   validarchat = () => {
     (() => {
-      let chat = document.getElementById("test-swipe-2");
-      if (chat) {
-        if (window.screen.width > 600) {
-          chat.style.display = "";
+      let chat = document.getElementById("contenido-chat");
+      let listagrupo = document.getElementById("test-swipe-1");
+      let cabecera = document.getElementById("cabecera");
+      let ancho = window.screen.height;
+      let alto = 100;
+
+      if (chat && listagrupo && cabecera) {
+        if (ancho <= 600) {
+          alto = ancho - 104;
         }
 
-        if (window.screen.width <= 600) {
-          chat.style.display = "none";
+        if (ancho > 600) {
+          alto = ancho - 64;
         }
+
+        chat.style.height = `${alto}`;
+        listagrupo.style.height = `${alto}`;
       }
     })();
   };

@@ -2,7 +2,7 @@ import React from "react";
 
 function HeaderComponent(tabs: boolean = false) {
   return (
-    <div className="fixed">
+    <div id="cabecera" className="fixed">
       <nav className="nav-wrapper verde-u">
         <span className="brand-logo center">ChatUnicundi</span>
       </nav>
