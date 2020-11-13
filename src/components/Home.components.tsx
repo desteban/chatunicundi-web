@@ -48,17 +48,34 @@ class Home extends React.Component<any, Istate> {
             {/*  Chats */}
             <div className="chats">
               {this.state.grupos.map((grupo) => {
-                return GrupoItem(grupo.nombre, grupo._id);
+                return GrupoItem(grupo.nombre, grupo._id, () => {
+                  this.validarGrupo(grupo);
+                });
               })}
             </div>
           </div>
 
           {/* chat */}
-          <Chat nombreChat="Mate" />
+          <Chat nombreChat={this.state.target?.nombre} />
         </div>
       </div>
     );
   }
+
+  validarGrupo = (grupoSe: IGrupo) => {
+    if (grupoSe) {
+      let grupoFound = this.state.grupos.find((grupo) => {
+        if (grupo === grupoSe) {
+          console.log(grupo);
+          return grupo;
+        }
+      });
+
+      if (grupoFound) {
+        this.setState({ target: grupoFound });
+      }
+    }
+  };
 
   // https://cahtunicundi.herokuapp.com/grupos
   UNSAFE_componentDidMount() {
