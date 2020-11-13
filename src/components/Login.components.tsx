@@ -1,28 +1,53 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import HeaderComponent from "./Header.component";
-// import escudo from "../../public/escudo.png";
 import escudo from "../images/escudo.png";
+import Axios from "axios";
+import { rutas } from "../util/rutas";
+import Loader from "./Loader.component";
+import { setUsuario } from "../util/usuario";
 
 interface Istate {
   username: string;
   password: string;
   history: any;
+  busqueda: boolean;
+}
+
+interface Irespuestahttp {
+  code: number;
+  tittle: string;
+  message?: string;
+  data?: any;
 }
 
 class Login extends Component<any, Istate> {
   constructor(props: any) {
     super(props);
-    this.state = { username: "", password: "", history: props.history };
+    this.state = {
+      username: "",
+      password: "",
+      history: props.history,
+      busqueda: false,
+    };
+
+    let usuario = JSON.parse(`${localStorage.getItem("usuario")}`);
+
+    if (usuario) {
+      this.state.history.push("/");
+    }
   }
 
   render() {
     return (
       <div className="login">
         {HeaderComponent()}
+
         <div className="container">
           <form onSubmit={(e) => this.send(e)} className="formulario-login">
-            <div>
+            <div className="contenido_form">
+              {this.state.busqueda === true ? Loader() : null}
+
               <div className="center">
                 <img
                   src={escudo}
@@ -41,7 +66,7 @@ class Login extends Component<any, Istate> {
                       this.setState({ username: e.target.value });
                     }}
                   ></input>
-                  <label htmlFor="username">Usuario</label>
+                  <label htmlFor="username">Codigo</label>
                 </div>
 
                 <div className="input-field col s12">
@@ -69,10 +94,36 @@ class Login extends Component<any, Istate> {
     );
   }
 
-  send = (event: any) => {
+  send = async (event: any) => {
     event.preventDefault();
-    console.log("state", this.state.username);
-    this.state.history.push("/");
+
+    this.setState({ busqueda: true });
+
+    let json = { codigo: this.state.username, password: this.state.password };
+
+    Axios.post(`${rutas.app}/login`, {
+      json,
+    })
+      .then((response) => {
+        let data: Irespuestahttp = response.data;
+
+        if (data.code === 400) {
+          alert(data.message);
+        }
+
+        if (data.code === 200 && data.tittle == "Succes") {
+          setUsuario(data.data);
+
+          this.state.history.push("/");
+        }
+
+        this.setState({ busqueda: false });
+      })
+      .catch((err) => {
+        console.log(err);
+
+        this.setState({ busqueda: false });
+      });
   };
 }
 

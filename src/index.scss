@@ -16,25 +16,6 @@
 //   left: 0;
 // }
 
-// .login {
-//   position: relative;
-// }
-
-// .logo-login {
-//   height: 200px;
-// }
-
-// .formulario-login {
-//   height: 100vh;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-
-// .verde-u {
-//   background-color: #1f3f3e;
-// }
-
 // .espacio-contenido {
 //   margin-top: 70px;
 // }
@@ -95,6 +76,29 @@
 // .contenido {
 //   overflow: hidden;
 // }
+
+.login {
+  position: relative;
+}
+
+.logo-login {
+  height: 200px;
+}
+
+.formulario-login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenido_form {
+  width: 100vh;
+}
+
+.verde-u {
+  background-color: #1f3f3e;
+}
 
 .nombre {
   font-size: 1.5rem;

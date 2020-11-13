@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
-
+import { withRouter } from "react-router-dom";
 import GrupoItem from "./Grupo.item.component";
 import Chat from "./Chat.component";
+import { Iusuario, getUsuario } from "../util/usuario";
 
 declare var M: any;
 
@@ -15,13 +16,22 @@ interface IGrupo {
 interface Istate {
   grupos: Array<IGrupo>;
   target?: IGrupo;
+  usuario?: Iusuario;
+  history: any;
 }
 
 class Home extends React.Component<any, Istate> {
   constructor(props: any) {
     super(props);
 
-    this.state = { grupos: [] };
+    let usuario: Iusuario = getUsuario();
+
+    this.state = { grupos: [], usuario, history: props.history };
+
+    if (!usuario) {
+      this.state.history.push("/login");
+    }
+    this.buscarGrupos();
   }
 
   render() {
@@ -41,7 +51,9 @@ class Home extends React.Component<any, Istate> {
                 alt="Imagen de perfil"
               />
               <div className="sidebar-header-icons">
-                <p className="nombre">Nombre</p>
+                <p className="nombre">
+                  {this.state.usuario ? this.state.usuario.nombre : "Nombre"}
+                </p>
               </div>
             </div>
 
@@ -66,7 +78,6 @@ class Home extends React.Component<any, Istate> {
     if (grupoSe) {
       let grupoFound = this.state.grupos.find((grupo) => {
         if (grupo === grupoSe) {
-          console.log(grupo);
           return grupo;
         }
       });
@@ -82,40 +93,6 @@ class Home extends React.Component<any, Istate> {
     this.tabs();
   }
 
-  validarchat = () => {
-    (() => {
-      let chat = document.getElementById("contenido-chat");
-      let listagrupo = document.getElementById("test-swipe-1");
-      let cabecera = document.getElementById("cabecera");
-      let ancho = window.screen.height;
-      let alto = 100;
-
-      if (chat && listagrupo && cabecera) {
-        if (ancho <= 600) {
-          alto = ancho - 104;
-        }
-
-        if (ancho > 600) {
-          alto = ancho - 64;
-        }
-
-        chat.style.height = `${alto}`;
-        listagrupo.style.height = `${alto}`;
-      }
-    })();
-  };
-
-  UNSAFE_componentWillMount() {
-    axios
-      .get("https://cahtunicundi.herokuapp.com/grupos")
-      .then((response) => {
-        this.setState({ grupos: response.data.grupos });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   tabs = () => {
     let elem = document.querySelector(".tabs");
     // var instance = M.Tabs.init(elem, {
@@ -123,6 +100,19 @@ class Home extends React.Component<any, Istate> {
     // });
     M.Tabs.init(elem);
   };
+
+  buscarGrupos = () => {
+    axios
+      .get("https://cahtunicundi.herokuapp.com/grupos")
+      .then((response) => {
+        this.setState({ grupos: response.data.grupos });
+        // return response.data.grupos;
+      })
+      .catch((error) => {
+        console.log(error);
+        // return [];
+      });
+  };
 }
 
-export default Home;
+export default withRouter(Home);
