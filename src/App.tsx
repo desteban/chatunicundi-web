@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="App espacio">
+        <div>
           <Switch>
             <Route path="/" exact>
               <Home />

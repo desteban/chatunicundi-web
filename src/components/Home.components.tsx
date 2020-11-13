@@ -14,6 +14,7 @@ interface IGrupo {
 
 interface Istate {
   grupos: Array<IGrupo>;
+  target?: IGrupo;
 }
 
 class Home extends React.Component<any, Istate> {
@@ -35,7 +36,10 @@ class Home extends React.Component<any, Istate> {
           <div className="sidebar">
             {/*  Sidebar header */}
             <div className="sidebar-header">
-              <img src="images/me.jpg" />
+              <img
+                src="https://images.unsplash.com/photo-1590031905406-f18a426d772d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                alt="Imagen de perfil"
+              />
               <div className="sidebar-header-icons">
                 <p className="nombre">Nombre</p>
               </div>
@@ -46,20 +50,18 @@ class Home extends React.Component<any, Istate> {
               {this.state.grupos.map((grupo) => {
                 return GrupoItem(grupo.nombre, grupo._id);
               })}
-              {GrupoItem("Fisica", "15")}
-              {GrupoItem("Fisica", "1")}
             </div>
           </div>
 
           {/* chat */}
-          <Chat />
+          <Chat nombreChat="Mate" />
         </div>
       </div>
     );
   }
 
   // https://cahtunicundi.herokuapp.com/grupos
-  componentDidMount() {
+  UNSAFE_componentDidMount() {
     this.tabs();
   }
 

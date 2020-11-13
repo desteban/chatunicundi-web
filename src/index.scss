@@ -99,3 +99,21 @@
 .nombre {
   font-size: 1.5rem;
 }
+
+.back {
+  margin-right: 1.5rem;
+}
+
+html {
+  width: 100%;
+}
+
+@media screen and (max-width: 599) {
+  .app {
+    margin: 10px;
+  }
+
+  .sidebar {
+    grid-column: 1 / -1 !important;
+  }
+}
