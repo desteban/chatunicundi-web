@@ -5,6 +5,8 @@ import GrupoItem from "./Grupo.item.component";
 import Chat from "./Chat.component";
 import { Iusuario, getUsuario } from "../util/usuario";
 import HeaderGrupos from "./Header.grupos.component";
+import Socket from "../util/socket.io";
+import { rutas } from "../util/rutas";
 
 declare var M: any;
 
@@ -22,9 +24,19 @@ interface Istate {
   history: any;
 }
 
+interface INotificacion {
+  code: number;
+  mensaje: string;
+  data?: any;
+}
+
 class Home extends React.Component<any, Istate> {
+  socket: any;
+
   constructor(props: any) {
     super(props);
+
+    this.socket = Socket(rutas.app);
 
     let usuario: Iusuario = getUsuario();
 
@@ -34,6 +46,7 @@ class Home extends React.Component<any, Istate> {
       this.state.history.push("/login");
     }
     this.buscarGrupos();
+    this.eventos();
   }
 
   render() {
@@ -49,7 +62,7 @@ class Home extends React.Component<any, Istate> {
             {/*  Sidebar header */}
             {HeaderGrupos(
               this.state.usuario
-                ? this.state.usuario.nombre
+                ? `${this.state.usuario.nombre} ${this.state.usuario.apellido}`
                 : "Nombre de usuario"
             )}
 
@@ -108,6 +121,26 @@ class Home extends React.Component<any, Istate> {
         console.log(error);
         // return [];
       });
+  };
+
+  eventos = () => {
+    this.notificacion();
+    this.not();
+  };
+
+  notificacion = () => {
+    this.socket.on(
+      `${this.state.usuario.codigo}:notificacion`,
+      (data: INotificacion) => {
+        alert(data.mensaje);
+      }
+    );
+  };
+
+  not = () => {
+    this.socket.on("notificacion", (data: any) => {
+      console.log("data del evento", data);
+    });
   };
 }
 
