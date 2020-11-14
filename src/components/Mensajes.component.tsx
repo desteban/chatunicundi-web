@@ -3,10 +3,6 @@ import { Iusuario } from "../util/usuario";
 import { Imensajes } from "./Chat.component";
 
 function Mensajes(mensaje: Imensajes, usuario: Iusuario) {
-  console.log(mensaje);
-
-  console.log(usuario);
-
   let fecha = new Date(`${mensaje.fecha}`);
 
   let clase: string = "";

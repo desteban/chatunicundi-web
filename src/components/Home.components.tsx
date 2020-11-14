@@ -66,11 +66,17 @@ class Home extends React.Component<any, Istate> {
         <div className="app">
           <div className="sidebar">
             {/*  Sidebar header */}
-            {HeaderGrupos(
-              this.state.usuario
-                ? `${this.state.usuario.nombre} ${this.state.usuario.apellido}`
-                : "Nombre de usuario"
-            )}
+
+            <HeaderGrupos
+              nombre={
+                this.state.usuario
+                  ? `${this.state.usuario.nombre} ${this.state.usuario.apellido}`
+                  : "Nombre de usuario"
+              }
+              navegar={() => {
+                this.state.history.push("/login");
+              }}
+            />
 
             {/*  Lista de grupos */}
             <div className="chats">
@@ -89,6 +95,9 @@ class Home extends React.Component<any, Istate> {
             value={this.state.mensaje}
             onchange={(texto: string) => {
               this.setState({ mensaje: texto });
+            }}
+            send={() => {
+              console.log("send");
             }}
           />
         </div>
@@ -138,25 +147,22 @@ class Home extends React.Component<any, Istate> {
 
   eventos = () => {
     this.notificacionGlobal();
-    this.notificacion();
   };
 
   notificacionGlobal = () => {
-    this.socket.on(
-      `${this.state.usuario.codigo}:notificacion`,
-      (data: INotificacion) => {
-        alert(data.mensaje);
-      }
-    );
+    if (this.state.usuario) {
+      this.socket.on(
+        `${this.state.usuario.codigo}:notificacion`,
+        (data: INotificacion) => {
+          alert(data.mensaje);
+        }
+      );
+    }
   };
 
-  notificacion = () => {
-    this.socket.on("notificacion", (data: any) => {
-      console.log("data del evento", data);
-    });
+  setMessage = () => {
+    console.log("send");
   };
-
-  changeMensaje = () => {};
 }
 
 export default withRouter(Home);

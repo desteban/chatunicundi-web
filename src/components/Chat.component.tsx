@@ -23,8 +23,9 @@ interface Iprops {
   nombreChat?: string;
   grupo?: IGrupo;
   user: Iusuario;
-  onchange?: any;
   value?: string;
+  onchange?: any;
+  send?: any;
 }
 
 function Chat(props: Iprops) {
@@ -53,12 +54,25 @@ function Chat(props: Iprops) {
               placeholder="Escribe un mensaje"
               value={props.value}
               onChange={(e) => {
-                props.onchange ? props.onchange(e.target.value) : null;
+                if (props.onchange) {
+                  props.onchange(e.target.value);
+                }
               }}
             ></textarea>
           </div>
           <div className="type-message-bar-right">
-            <i className="material-icons">send</i>
+            <div className="boton waves-effect waves-light verde-u">
+              <i
+                className="material-icons"
+                onClick={() => {
+                  if (props.send) {
+                    props.send();
+                  }
+                }}
+              >
+                send
+              </i>
+            </div>
           </div>
         </div>
       </div>

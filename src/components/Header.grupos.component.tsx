@@ -1,7 +1,13 @@
 import React from "react";
 import { deleteUsuario } from "../util/usuario";
+import { withRouter } from "react-router-dom";
 
-function HeaderGrupos(nombre: string) {
+interface Iprops {
+  nombre: string;
+  navegar?: any;
+}
+
+function HeaderGrupos(props: Iprops) {
   return (
     <div className="sidebar-header">
       <img
@@ -9,11 +15,15 @@ function HeaderGrupos(nombre: string) {
         alt="Imagen de perfil"
       />
       <div className="sidebar-header-icons">
-        <p className="nombre">{nombre}</p>
+        <p className="nombre">{props.nombre}</p>
         <i
           className="material-icons salir"
           onClick={() => {
             deleteUsuario();
+
+            if (props.navegar) {
+              props.navegar();
+            }
           }}
         >
           exit_to_app
