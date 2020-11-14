@@ -101,7 +101,7 @@
 }
 
 .nombre {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 .back {
@@ -120,4 +120,37 @@ html {
   .sidebar {
     grid-column: 1 / -1 !important;
   }
+}
+
+.sinmensajes {
+  background: rgba(lightgray, 1);
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    font-size: 6rem;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
+  }
+
+  .salir {
+    margin-left: 1rem;
+  }
+}
+
+.mensaje {
+  position: relative;
+  padding: 1.2rem 1rem;
+}
+.nombre-persona-mensaje {
+  position: absolute;
+  top: 0;
 }

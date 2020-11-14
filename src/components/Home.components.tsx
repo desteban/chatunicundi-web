@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import GrupoItem from "./Grupo.item.component";
 import Chat from "./Chat.component";
 import { Iusuario, getUsuario } from "../util/usuario";
+import HeaderGrupos from "./Header.grupos.component";
 
 declare var M: any;
 
@@ -11,6 +12,7 @@ interface IGrupo {
   grupo?: number;
   nombre?: string;
   _id?: string;
+  mensajes: [];
 }
 
 interface Istate {
@@ -45,19 +47,13 @@ class Home extends React.Component<any, Istate> {
         <div className="app">
           <div className="sidebar">
             {/*  Sidebar header */}
-            <div className="sidebar-header">
-              <img
-                src="https://images.unsplash.com/photo-1590031905406-f18a426d772d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                alt="Imagen de perfil"
-              />
-              <div className="sidebar-header-icons">
-                <p className="nombre">
-                  {this.state.usuario ? this.state.usuario.nombre : "Nombre"}
-                </p>
-              </div>
-            </div>
+            {HeaderGrupos(
+              this.state.usuario
+                ? this.state.usuario.nombre
+                : "Nombre de usuario"
+            )}
 
-            {/*  Chats */}
+            {/*  Lista de grupos */}
             <div className="chats">
               {this.state.grupos.map((grupo) => {
                 return GrupoItem(grupo.nombre, grupo._id, () => {
@@ -68,7 +64,7 @@ class Home extends React.Component<any, Istate> {
           </div>
 
           {/* chat */}
-          <Chat nombreChat={this.state.target?.nombre} />
+          <Chat grupo={this.state.target} user={this.state.usuario} />
         </div>
       </div>
     );

@@ -1,5 +1,5 @@
 export interface Iusuario {
-  _id: string;
+  _id?: string;
   nombre: string;
   apellido: string;
   codigo: number;
@@ -13,4 +13,8 @@ export const getUsuario = (): Iusuario => {
 
 export const setUsuario = (usuario: Iusuario) => {
   localStorage.setItem("usuario", JSON.stringify(usuario));
+};
+
+export const deleteUsuario = () => {
+  localStorage.removeItem("usuario");
 };

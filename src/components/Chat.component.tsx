@@ -1,27 +1,39 @@
 import React from "react";
+import { Iusuario } from "../util/usuario";
 import HeaderChat from "./HeaderChat.component";
-
-import messageTailReceiver from "../images/message-tail-receiver.svg";
-import messageTailSender from "../images/message-tail-sender.svg";
+import Mensajes from "./Mensajes.component";
+// import messageTailReceiver from "../images/message-tail-receiver.svg";
+// import messageTailSender from "../images/message-tail-sender.svg";
 
 interface IGrupo {
   grupo?: number;
   nombre?: string;
   _id?: string;
+  mensajes: [];
+}
+
+export interface Imensajes {
+  _id: string;
+  texto: string;
+  usuario?: string;
+  fecha?: string;
 }
 
 interface Iprops {
   nombreChat?: string;
   grupo?: IGrupo;
+  user: Iusuario;
 }
 
 function Chat(props: Iprops) {
   return (
     <div className="main hide-on-small-only">
-      {/*  Main chat window header */}
-      {HeaderChat(props.nombreChat)}
+      {props.grupo
+        ? HeaderChat(props.grupo ? props.grupo.nombre : "Nombre del grupo")
+        : null}
       {/*  Chat window */}
       <div className="chat-window">
+        {/* send */}
         <div className="sender">
           <span className="sender-message-tail">
             {/* <img src={messageTailSender} /> */}
@@ -32,15 +44,22 @@ function Chat(props: Iprops) {
             <img src="./images/double-check-seen.svg" />
           </span>
         </div>
+
+        {/* receiver */}
         <div className="receiver">
           <span className="receiver-message-tail">
-            <img src={messageTailReceiver} />
+            {/* <img src={messageTailReceiver} /> */}
           </span>
           <span className="receiver-message">
             I'm doing fine! What about you??
           </span>
           <span className="message-time">21:35</span>
         </div>
+
+        {props.grupo?.mensajes.map((grupo) => Mensajes(grupo, props.user))}
+
+        {validarMensajes(props.grupo ? props.grupo.mensajes : [])}
+
         {/*  Type message bar */}
         <div className="type-message-bar">
           <div className="type-message-bar-left">
@@ -63,5 +82,15 @@ function Chat(props: Iprops) {
     </div>
   );
 }
+
+const validarMensajes = (mensajes: Array<Imensajes>) => {
+  if (mensajes.length <= 0) {
+    return (
+      <div className="sinmensajes">
+        <p>Selecciona un grupo</p>
+      </div>
+    );
+  }
+};
 
 export default Chat;
