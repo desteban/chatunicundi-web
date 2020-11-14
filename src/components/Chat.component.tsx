@@ -15,7 +15,7 @@ interface IGrupo {
 export interface Imensajes {
   _id: string;
   texto: string;
-  usuario?: string;
+  usuario?: Iusuario;
   fecha?: string;
 }
 

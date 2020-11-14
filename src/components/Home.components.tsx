@@ -18,7 +18,7 @@ interface IGrupo {
 interface Istate {
   grupos: Array<IGrupo>;
   target?: IGrupo;
-  usuario?: Iusuario;
+  usuario: Iusuario;
   history: any;
 }
 

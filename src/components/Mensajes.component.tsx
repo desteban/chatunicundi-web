@@ -3,16 +3,26 @@ import { Iusuario } from "../util/usuario";
 import { Imensajes } from "./Chat.component";
 
 function Mensajes(mensaje: Imensajes, usuario: Iusuario) {
+  console.log(mensaje);
+
+  console.log(usuario);
+
   let fecha = new Date(`${mensaje.fecha}`);
 
   let clase: string = "";
 
-  if (mensaje.usuario == usuario._id) {
-    clase = "sender";
-  }
+  let nombre: string = "";
 
-  if (mensaje.usuario != usuario._id) {
-    clase = "receiver";
+  if (mensaje.usuario) {
+    if (mensaje.usuario._id != usuario._id) {
+      nombre = mensaje.usuario.nombre;
+      clase = "receiver";
+    }
+
+    if (mensaje.usuario._id == usuario._id) {
+      nombre = "Tu";
+      clase = "sender";
+    }
   }
 
   return (
@@ -20,7 +30,7 @@ function Mensajes(mensaje: Imensajes, usuario: Iusuario) {
       <span className={`${clase}-message-tail`}>
         {/* <img src={messageTailSender} /> */}
       </span>
-      <span className="nombre-persona-mensaje">nombre</span>
+      <span className="nombre-persona-mensaje"> {`${nombre}:`} </span>
       <span className={`${clase}-message`}>
         {mensaje.texto ? mensaje.texto : "Hola"}
       </span>
