@@ -23,6 +23,8 @@ interface Iprops {
   nombreChat?: string;
   grupo?: IGrupo;
   user: Iusuario;
+  onchange?: any;
+  value?: string;
 }
 
 function Chat(props: Iprops) {
@@ -33,29 +35,6 @@ function Chat(props: Iprops) {
         : null}
       {/*  Chat window */}
       <div className="chat-window">
-        {/* send */}
-        <div className="sender">
-          <span className="sender-message-tail">
-            {/* <img src={messageTailSender} /> */}
-          </span>
-          <span className="sender-message">Hey! How's it going??</span>
-          <span className="message-time">21:32</span>
-          <span className="message-status">
-            <img src="./images/double-check-seen.svg" />
-          </span>
-        </div>
-
-        {/* receiver */}
-        <div className="receiver">
-          <span className="receiver-message-tail">
-            {/* <img src={messageTailReceiver} /> */}
-          </span>
-          <span className="receiver-message">
-            I'm doing fine! What about you??
-          </span>
-          <span className="message-time">21:35</span>
-        </div>
-
         {props.grupo?.mensajes.map((grupo) => Mensajes(grupo, props.user))}
 
         {validarMensajes(props.grupo ? props.grupo.mensajes : [])}
@@ -72,6 +51,10 @@ function Chat(props: Iprops) {
               id="textarea1"
               className="materialize-textarea scroll-person"
               placeholder="Escribe un mensaje"
+              value={props.value}
+              onChange={(e) => {
+                props.onchange ? props.onchange(e.target.value) : null;
+              }}
             ></textarea>
           </div>
           <div className="type-message-bar-right">

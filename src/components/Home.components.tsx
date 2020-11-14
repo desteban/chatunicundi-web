@@ -22,6 +22,7 @@ interface Istate {
   target?: IGrupo;
   usuario: Iusuario;
   history: any;
+  mensaje: string;
 }
 
 interface INotificacion {
@@ -40,7 +41,12 @@ class Home extends React.Component<any, Istate> {
 
     let usuario: Iusuario = getUsuario();
 
-    this.state = { grupos: [], usuario, history: props.history };
+    this.state = {
+      grupos: [],
+      usuario,
+      history: props.history,
+      mensaje: "",
+    };
 
     if (!usuario) {
       this.state.history.push("/login");
@@ -77,7 +83,14 @@ class Home extends React.Component<any, Istate> {
           </div>
 
           {/* chat */}
-          <Chat grupo={this.state.target} user={this.state.usuario} />
+          <Chat
+            grupo={this.state.target}
+            user={this.state.usuario}
+            value={this.state.mensaje}
+            onchange={(texto: string) => {
+              this.setState({ mensaje: texto });
+            }}
+          />
         </div>
       </div>
     );
@@ -124,11 +137,11 @@ class Home extends React.Component<any, Istate> {
   };
 
   eventos = () => {
+    this.notificacionGlobal();
     this.notificacion();
-    this.not();
   };
 
-  notificacion = () => {
+  notificacionGlobal = () => {
     this.socket.on(
       `${this.state.usuario.codigo}:notificacion`,
       (data: INotificacion) => {
@@ -137,11 +150,13 @@ class Home extends React.Component<any, Istate> {
     );
   };
 
-  not = () => {
+  notificacion = () => {
     this.socket.on("notificacion", (data: any) => {
       console.log("data del evento", data);
     });
   };
+
+  changeMensaje = () => {};
 }
 
 export default withRouter(Home);

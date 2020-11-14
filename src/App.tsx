@@ -20,10 +20,6 @@ class App extends React.Component {
               <Login />
             </Route>
 
-            <Route path="/chat">
-              <Chat />
-            </Route>
-
             <Route path="*">
               <Error />
             </Route>
