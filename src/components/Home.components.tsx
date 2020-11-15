@@ -8,8 +8,10 @@ import HeaderGrupos from "./Header.grupos.component";
 import { rutas } from "../util/rutas";
 import { INotificacion } from "../eventos";
 import Loader from "./Loader.component";
+// import Socket from "socket.io-client";
 
-const Socket = require("../util/socket.io");
+// const Socket = require("../util/socket.io");
+declare var io: any;
 
 declare var M: any;
 
@@ -40,7 +42,7 @@ class Home extends React.Component<any, Istate> {
       history: props.history,
       mensaje: "",
       busqueda: true,
-      socket: Socket(rutas.app),
+      socket: io(rutas.app),
     };
 
     if (!this.state.usuario) {

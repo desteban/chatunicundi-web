@@ -2,81 +2,6 @@
 @import "./styles/scroll.scss";
 @import "./styles/chat.scss";
 
-// $sombra: rgb(128, 126, 121);
-
-// body {
-//   background-color: #f7f7f7;
-// }
-
-// .fixed {
-//   position: fixed;
-//   z-index: 1000;
-//   width: 100%;
-//   top: 0;
-//   left: 0;
-// }
-
-// .espacio-contenido {
-//   margin-top: 70px;
-// }
-
-// .tabs {
-//   display: flex;
-//   background-color: #1f3f3e;
-
-//   .tab {
-//     flex: 1;
-//   }
-
-//   .indicator {
-//     background-color: #1f3f3e;
-//   }
-// }
-
-// .tabs .tab a:hover,
-// .tabs .tab a.active {
-//   color: #fff;
-// }
-
-// .tabs .tab a {
-//   color: gray;
-// }
-
-// .tabs .tab a:focus,
-// .tabs .tab a:focus.active {
-//   background-color: rgba(0, 0, 0, 0.2);
-//   outline: none;
-// }
-
-// /* telefonos */
-// @media screen and (max-width: 600px) {
-//   .espacio {
-//     margin: 0 2%;
-//   }
-// }
-
-// /* tablets */
-// @media screen and (max-width: 991px) and (min-width: 601px) {
-//   .espacio {
-//     margin: 0 5%;
-//   }
-// }
-
-// /* computadores */
-// @media screen and (min-width: 992px) {
-//   .espacio {
-//     margin: 0 10%;
-//   }
-// }
-
-// #contenido-chat {
-//   padding: 0px;
-// }
-
-// .contenido {
-//   overflow: hidden;
-// }
-
 .login {
   position: relative;
 }
@@ -191,6 +116,15 @@ html {
 }
 
 @media screen and (max-width: 991px) {
+  .chat-window-header {
+    position: fixed;
+    width: 100%;
+  }
+
+  .chat-window {
+    margin: 7rem 3rem;
+  }
+
   .visible {
     display: block;
     position: absolute;
