@@ -1,6 +1,11 @@
 import React from "react";
 
-function HeaderChat(nombre: string = "Nombre Chat") {
+interface Iprops {
+  nombre?: string;
+}
+// nombre: string = "Nombre Chat"
+
+function HeaderChat(props: Iprops) {
   return (
     <div className="chat-window-header">
       <div className="chat-window-header-left">
@@ -11,7 +16,9 @@ function HeaderChat(nombre: string = "Nombre Chat") {
           alt="Imagen del grupo"
         />
         <div className="contact-name-and-status-container">
-          <span className="chat-window-contact-name">{nombre}</span>
+          <span className="chat-window-contact-name">
+            {props.nombre ? props.nombre : "Nombre Chat"}
+          </span>
         </div>
       </div>
       <div className="chat-window-header-right"></div>

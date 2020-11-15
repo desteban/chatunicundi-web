@@ -1,3 +1,4 @@
+import { group } from "console";
 import React from "react";
 import { Iusuario } from "../util/usuario";
 import HeaderChat from "./HeaderChat.component";
@@ -9,18 +10,17 @@ interface IGrupo {
   grupo?: number;
   nombre?: string;
   _id?: string;
-  mensajes: [];
+  mensajes: Array<Imensajes>;
 }
 
 export interface Imensajes {
   _id: string;
   texto: string;
   usuario?: Iusuario;
-  fecha?: string;
+  fecha: string;
 }
 
 interface Iprops {
-  nombreChat?: string;
   grupo?: IGrupo;
   user: Iusuario;
   value?: string;
@@ -30,10 +30,8 @@ interface Iprops {
 
 function Chat(props: Iprops) {
   return (
-    <div className="main hide-on-small-only">
-      {props.grupo
-        ? HeaderChat(props.grupo ? props.grupo.nombre : "Nombre del grupo")
-        : null}
+    <div className="main hide-on-med-and-down">
+      <HeaderChat nombre={props.grupo?.nombre} />
       {/*  Chat window */}
       <div className="chat-window">
         {props.grupo?.mensajes.map((grupo) => Mensajes(grupo, props.user))}

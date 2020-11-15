@@ -112,6 +112,7 @@ class Login extends Component<any, Istate> {
         }
 
         if (data.code === 200 && data.tittle == "Succes") {
+          data.data.password = undefined;
           setUsuario(data.data);
 
           this.state.history.push("/");
