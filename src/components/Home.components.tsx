@@ -59,7 +59,11 @@ class Home extends React.Component<any, Istate> {
         <div className="bottom"></div>
         {/*  App */}
         <div className="app">
-          <div className="sidebar col s12">
+          <div
+            className={`sidebar col s12 ${
+              this.state.target ? "invisible" : ""
+            }`}
+          >
             {/*  Sidebar header */}
 
             <HeaderGrupos
@@ -96,6 +100,10 @@ class Home extends React.Component<any, Istate> {
             send={() => {
               this.setMessage();
             }}
+            clase={this.state.target ? "visible" : "invisible"}
+            back={() => {
+              this.setState({ target: undefined });
+            }}
           />
         </div>
       </div>
@@ -129,6 +137,10 @@ class Home extends React.Component<any, Istate> {
 
     return true;
   }
+
+  back = () => {
+    this.setState({ target: undefined });
+  };
 
   tabs = () => {
     let elem = document.querySelector(".tabs");

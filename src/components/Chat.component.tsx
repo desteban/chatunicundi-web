@@ -26,12 +26,21 @@ interface Iprops {
   value?: string;
   onchange?: any;
   send?: any;
+  clase: string;
+  back?: any;
 }
 
 function Chat(props: Iprops) {
   return (
-    <div className="main hide-on-med-and-down">
-      <HeaderChat nombre={props.grupo?.nombre} />
+    <div className={`main ${props.clase}`}>
+      <HeaderChat
+        nombre={props.grupo?.nombre}
+        back={() => {
+          if (props.back) {
+            props.back();
+          }
+        }}
+      />
       {/*  Chat window */}
       <div className="chat-window">
         {props.grupo?.mensajes.map((grupo) => Mensajes(grupo, props.user))}
