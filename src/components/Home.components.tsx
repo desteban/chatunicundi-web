@@ -126,7 +126,6 @@ class Home extends React.Component<any, Istate> {
     }
   };
 
-  // https://cahtunicundi.herokuapp.com/grupos
   UNSAFE_componentDidMount() {
     this.tabs();
     this.state.grupos.map((grupo) => {
@@ -154,9 +153,10 @@ class Home extends React.Component<any, Istate> {
 
   buscarGrupos = () => {
     this.setState({ busqueda: true });
-
     axios
-      .get("https://cahtunicundi.herokuapp.com/grupos")
+      .get(
+        `https://cahtunicundi.herokuapp.com/grupos/persona/${this.state.usuario.codigo}`
+      )
       .then((response) => {
         this.setState({ grupos: response.data.grupos });
         this.setState({ busqueda: false });

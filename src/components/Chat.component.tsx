@@ -45,7 +45,7 @@ function Chat(props: Iprops) {
       <div className="chat-window">
         {props.grupo?.mensajes.map((grupo) => Mensajes(grupo, props.user))}
 
-        {validarMensajes(props.grupo ? props.grupo.mensajes : [])}
+        {validarMensajes(props.grupo)}
 
         {/*  Type message bar */}
         <div className="type-message-bar">
@@ -87,8 +87,8 @@ function Chat(props: Iprops) {
   );
 }
 
-const validarMensajes = (mensajes: Array<Imensajes>) => {
-  if (mensajes.length <= 0) {
+const validarMensajes = (grupo?: IGrupo) => {
+  if (!grupo) {
     return (
       <div className="sinmensajes">
         <p>Selecciona un grupo</p>
