@@ -155,22 +155,24 @@ class Home extends React.Component<any, Istate> {
   };
 
   buscarGrupos = () => {
-    this.setState({ busqueda: true });
-    axios
-      .get(
-        `https://cahtunicundi.herokuapp.com/grupos/persona/${this.state.usuario.codigo}`
-      )
-      .then((response) => {
-        this.setState({ grupos: response.data.grupos });
-        this.setState({ busqueda: false });
-        response.data.grupos.map((grupo: any) => {
-          this.mensaje(grupo._id);
+    if (this.state.usuario && this.state.usuario.codigo) {
+      this.setState({ busqueda: true });
+      axios
+        .get(
+          `https://cahtunicundi.herokuapp.com/grupos/persona/${this.state.usuario.codigo}`
+        )
+        .then((response) => {
+          this.setState({ grupos: response.data.grupos });
+          this.setState({ busqueda: false });
+          response.data.grupos.map((grupo: any) => {
+            this.mensaje(grupo._id);
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          this.setState({ busqueda: false });
         });
-      })
-      .catch((error) => {
-        console.log(error);
-        this.setState({ busqueda: false });
-      });
+    }
   };
 
   eventos = () => {
