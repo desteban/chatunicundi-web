@@ -3,6 +3,7 @@ import React from "react";
 import { Iusuario } from "../util/usuario";
 import HeaderChat from "./HeaderChat.component";
 import Mensajes from "./Mensajes.component";
+import construccion from "../images/construccion.png";
 // import messageTailReceiver from "../images/message-tail-receiver.svg";
 // import messageTailSender from "../images/message-tail-sender.svg";
 
@@ -91,7 +92,13 @@ const validarMensajes = (grupo?: IGrupo) => {
   if (!grupo) {
     return (
       <div className="sinmensajes">
-        <p>Selecciona un grupo</p>
+        <div className="construcc">
+          <p className="">Selecciona un grupo</p>
+          <p>Sito en construccion</p>
+          <div className="center">
+            <img src={construccion} className="centerimg" />
+          </div>
+        </div>
       </div>
     );
   }

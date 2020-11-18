@@ -64,6 +64,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
 
   p {
     font-size: 6rem;
@@ -179,4 +180,20 @@ html {
 
 .sender {
   margin-top: 0.5rem;
+}
+
+.centerimg {
+  margin: auto;
+}
+
+.ajustes-chat {
+  text-align: right;
+}
+
+.grid {
+  overflow: hidden;
+}
+
+.texto {
+  margin: 0px;
 }

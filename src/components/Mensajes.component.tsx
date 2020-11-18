@@ -27,9 +27,13 @@ function Mensajes(mensaje: Imensajes, usuario: Iusuario) {
         {/* <img src={messageTailSender} /> */}
       </span>
       <span className="nombre-persona-mensaje"> {`${nombre}:`} </span>
-      <span className={`${clase}-message`}>
+      {/* <span className={`${clase}-message`}>
         {mensaje.texto ? mensaje.texto : "Hola"}
-      </span>
+      </span> */}
+
+      <p className={`${clase}-message texto`}>
+        {mensaje.texto ? mensaje.texto : "Hola"}
+      </p>
       <span className="message-time">
         {fecha ? `${fecha.getHours()}:${fecha.getMinutes()}` : "00:00"}
       </span>

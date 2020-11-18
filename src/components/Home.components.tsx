@@ -149,6 +149,9 @@ class Home extends React.Component<any, Istate> {
     //   swipeable: true,
     // });
     M.Tabs.init(elem);
+
+    let drop = document.querySelectorAll(".dropdown-trigger");
+    M.Dropdown.init(drop);
   };
 
   buscarGrupos = () => {
@@ -196,6 +199,11 @@ class Home extends React.Component<any, Istate> {
       this.state.socket.emit("grupo:mensaje", mensajeSocket);
 
       this.setState({ mensaje: "" });
+      //22
+      let area = document.getElementById("textarea1");
+      if (area) {
+        area.style.height = "22px";
+      }
     }
 
     if (!this.state.target) {

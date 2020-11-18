@@ -1,5 +1,7 @@
 import React from "react";
 
+declare var M: any;
+
 interface Iprops {
   nombre?: string;
   back?: any;
@@ -31,9 +33,22 @@ function HeaderChat(props: Iprops) {
           </span>
         </div>
       </div>
-      <div className="chat-window-header-right"></div>
+      <div className="chat-window-header-right">
+        <a
+          className="dropdown-trigger waves-effect waves-light ajustes-chat"
+          href="#"
+          data-target="dropdown1"
+        >
+          <i className="material-icons">settings</i>
+        </a>
+
+        <ul id="dropdown1" className="dropdown-content">
+          <li>
+            <a href="#!">Ver integrantes</a>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
-
 export default HeaderChat;
