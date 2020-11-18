@@ -1,6 +1,7 @@
 import React from "react";
 import { Iusuario } from "../util/usuario";
 import { Imensajes } from "./Chat.component";
+import { Markup } from "interweave";
 
 function Mensajes(mensaje: Imensajes, usuario: Iusuario) {
   let fecha = new Date(`${mensaje.fecha}`);
@@ -27,13 +28,11 @@ function Mensajes(mensaje: Imensajes, usuario: Iusuario) {
         {/* <img src={messageTailSender} /> */}
       </span>
       <span className="nombre-persona-mensaje"> {`${nombre}:`} </span>
-      {/* <span className={`${clase}-message`}>
-        {mensaje.texto ? mensaje.texto : "Hola"}
-      </span> */}
 
       <p className={`${clase}-message texto`}>
-        {mensaje.texto ? mensaje.texto : "Hola"}
+        <Markup content={mensaje.texto ? mensaje.texto : "Hola"} />
       </p>
+
       <span className="message-time">
         {fecha ? `${fecha.getHours()}:${fecha.getMinutes()}` : "00:00"}
       </span>
